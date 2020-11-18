@@ -1,0 +1,21 @@
+<div class="pagination">
+	<ul>
+		{% if page.has_previous %}
+		<li><a href="?page=1">First</a></li>
+		<li><a href="?page={{ page.previous_page_number }}">Previous</a></li>
+		{% endif %}
+
+		{% for i in page.paginator.page_range %}
+			{% if page.number == i %}
+				<li><a class="active" href="?page={{ i }}">{{ i }}</a></li>
+			{% elif i > page.number|add:'-3' and i < page.number|add:'3' %}
+				<li><a href="?page={{ i }}">{{ i }}</a></li>
+			{% endif %}
+		{% endfor %}
+
+		{% if page.has_next %}
+			<li><a href="?page={{ page.next_page_number }}">Next</a></li>
+			<li><a href="?page={{ page.paginator.num_pages }}">Last</a></li>
+		{% endif %}
+	</ul>
+</div>

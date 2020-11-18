@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+{% block title %}My Blog{% endblock %}
+{% block content %}
+{% if tag %}
+<h2 class="tag-header">Posts tagged '{{ tag.name }}'</h2>
+{% endif %}
+{% for post in posts %}
+<article>
+	<h2 class="post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+	<hr class="post-title-underline">
+	<small class="post-info">{{ post.publish|date:"l, j F Y" }}</small>
+	{{ post.body|linebreaks|truncatewords:30 }}
+	<p><a href="{{ post.get_absolute_url }}">Continue reading</a></p>
+</article>
+{% endfor %}
+{% if page.num_pages > 1 %}
+{% include "pagination.html" with page=posts %}
+{% endif %}
+{% endblock %}
