@@ -173,12 +173,24 @@ a:visited,
 
 /* nice redish color #ff1245; */
 
-.site-header { background-color: var(--bright-green); }
+.site-header {
+    background-image: linear-gradient(to left, #236b64, #008876, #00a683, #00c58a, #12e38c);
+}
+
 .site-header h1 { font-size: 1.75em; }
 .site-header h1 a { color: white; }
 
 .site-nav a {
     color: var(--dark-green);
+    text-decoration: none;
+}
+
+.site-nav .nav-item {
+    padding-bottom: 3px;
+}
+
+.site-nav .nav-item.active {
+    border-bottom: 5px solid var(--dark-green);
 }
 
 .post-title > a {
